@@ -7,6 +7,9 @@
 ## Explicação do Projeto
 - Utilizaremos uma imagem do banco de dados oracle express e conectar um app spring com este banco, depois do app conectado usaremos o dbgate para visualizar o banco.
 
+## Cenário
+- Informações dos Pokémon de um Treinador Pokémon
+
 ## Requisitos mínimos e recomendados para rodar a aplicação completa
 - RAM: 3gb - Recomendado: 4gb
 - CPU: 1vCPU - Recomendado: 2vCPU
