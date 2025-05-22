@@ -21,3 +21,48 @@ DBGate: **dbgate/dbgate**
 Site: https://dbgate.org/download/
 
 ## Execução do projeto
+
+### 1º - Entre na sua VM
+- Conecte em sua VM pelo terminal via ssh
+
+### 2º - Instale e configure o **Docker** e o **Git** na sua VM
+- Verifique se já está instalado com os comandos
+```
+docker --version
+```
+
+```
+git --version
+```
+- Se os comandos anteriores não retornaram nada, então é necessário instalar
+#### Instalação **Docker**
+- Para instalação do **Docker**, execute os comandos abaixo. Após isso verifique se foi instalado corretamente com ```docker --version```.
+```
+sudo yum install -y yum-utils -y
+
+```
+
+```
+sudo yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+```
+
+```
+sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
+
+```
+sudo systemctl start docker
+```
+#### Configuração **Docker**
+- Execute o seguinte comando para o usuário conseguir rodar os comandos docker sem o "sudo"
+```
+sudo usermod -aG docker seu_usuario
+```
+#### Instalação **Git**
+- Para instalação do **Git**, execute o comando abaixo. Após isso verifique se foi instalado corretamente com ```git --version```.
+```sudo yum install git -y```
+### 3º - Criação dos três containers (a partir de agora os comandos terão nomes pré-definidos para conexão e construção dos containers)
+#### Crie sua rede 
+```
+docker network create net-dimdim
+```
