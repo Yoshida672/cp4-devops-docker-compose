@@ -223,7 +223,7 @@ sudo rm -rf oracle_data
 rm -rf crud-with-dockerfile
 ```
 
-### 🧐7º - Considerações Finais
+### 🧐 7º - Considerações Finais
 
 - Vamos rever nosso projeto
 ✅ Containerizamos 3 imagens, sendo uma delas personalizada
