@@ -1,4 +1,4 @@
-# CP3 - DevOps
+# CP3 - DevOps and Cloud Computing
 
 ## INTEGRANTES
 - RM555010 • Gustavo Matias Teixeira
@@ -7,7 +7,7 @@
 ## Explicação do Projeto
 - Utilizaremos uma imagem do banco de dados oracle express e conectar um app spring com este banco, depois do app conectado usaremos o dbgate para visualizar o banco.
 
-## Requisitos mínimos para rodar a aplicação completa
+## Requisitos mínimos e recomendados para rodar a aplicação completa
 - RAM: 3gb - Recomendado: 4gb
 - CPU: 1vCPU - Recomendado: 2vCPU
 - Disco: 20gb - Recomendado: 30gb
@@ -24,10 +24,10 @@
 
 ## Execução do projeto
 
-### 1º - Entre na sua VM
+### 🌐 1º - Entre na sua VM
 - Conecte em sua VM pelo terminal via ssh
 
-### 2º - Instale e configure o **Docker** e o **Git** na sua VM
+### 🛠️ 2º - Instale e configure o **Docker** e o **Git** na sua VM
 - Verifique se já está instalado com os comandos
 ```
 docker --version
@@ -65,7 +65,7 @@ sudo usermod -aG docker seu_usuario
 ```
 sudo yum install git -y
 ```
-### 3º - Criação dos três containers (a partir de agora os comandos terão nomes pré-definidos para conexão e construção dos containers)
+### ⚙ 3º - Criação dos três containers (a partir de agora os comandos terão nomes pré-definidos para conexão e construção dos containers)
 #### Crie sua rede 
 ```
 docker network create net-dimdim
@@ -101,14 +101,14 @@ docker run -d --name app-java --network net-dimdim -p 8080:8080 app-spring
 ```
 docker run -d --name dbgate --network net-dimdim -p 3000:3000 dbgate/dbgate
 ```
-### 4º - Verificando o User do App Java
+### 🔎 4º - Verificando o User do App Java
 - Verifique se foi criado um usuário não root na aplicação
 ```
 docker exec -it app-java /bin/bash
 ```
 - Teste o comando ```whoami```
 
-### 5º - Testando o CRUD
+### 🧪 5º - Testando o CRUD
 
 #### DBGate
 - Conecte no DBGate através da porta 3000 ```http://ip:3000```
@@ -147,7 +147,7 @@ Senha: Oracle123
 }
 ```
 
-![image](https://github.com/user-attachments/assets/76f026e2-22b9-474a-a8de-9deaf76d11c1)
+![image](https://github.com/user-attachments/assets/acfa0017-3a1a-4aee-a619-c570ee111f3c)
 
 - Clique em Send ou tecle CTRL + Enter
 
@@ -199,3 +199,37 @@ Senha: Oracle123
 
 ![image](https://github.com/user-attachments/assets/7fba7c4b-7647-405a-944c-95daabb2b4b9)
 
+### 🗑 6º - Removendo as imagens
+
+#### Caso queira deletar as imagens após fazer os testes necessários, execute esses comandos:
+
+```
+docker stop dbgate && docker stop app-java && docker stop oracle-db
+```
+
+```
+docker system prune -a -f --volumes
+```
+
+```
+cd /home/seu_usuario
+```
+
+```
+sudo rm -rf oracle_data
+```
+
+```
+rm -rf crud-with-dockerfile
+```
+
+### 🧐7º - Considerações Finais
+
+- Vamos rever nosso projeto
+✅ Containerizamos 3 imagens, sendo uma delas personalizada
+✅ Sinergia e conexão entre as imagens
+✅ Criação de um banco de dados funcional
+✅ CRUD completo
+✅ Automatização por Dockerfile
+
+- Obrigado por acompanhar até aqui!😉
