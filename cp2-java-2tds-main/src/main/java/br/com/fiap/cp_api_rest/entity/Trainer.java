@@ -5,16 +5,24 @@ import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 @Entity
+@Table(name="trainer_pokemon")
 public class Trainer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
+    @Column(name = "trainer_name", nullable = false)
     private String name;
+    @Column(name = "date_start")
     private Date startJourney;
-    private double money;
-    private int pokemonHasCaught;
-    private int pokemonHasView;
-    private int numberBadge;
+    @Column(name = "money",nullable = false)
+    private double money = 0;
+    @Column(name = "pokemon_caught",nullable = false)
+    private int pokemonHasCaught = 0;
+    @Column(name = "pokemon_view",nullable = false)
+    private int pokemonHasView = 0;
+    @Column(name = "number_badge",nullable = false)
+    private int numberBadge = 0;
+    @Column(name = "city",nullable = false)
     private String city;
 
     @OneToMany(mappedBy = "trainer")
@@ -25,7 +33,7 @@ public class Trainer {
     public Trainer() {
     }
 
-    public Trainer(Integer id, String name, Date startJourney, double money, int pokemonHasCaught, int pokemonHasView, int numberBadge, String city, List<PokemonTrainer> pokemons) {
+    public Trainer(Long id, String name, Date startJourney, double money, int pokemonHasCaught, int pokemonHasView, int numberBadge, String city, List<PokemonTrainer> pokemons) {
         this.id = id;
         this.name = name;
         this.startJourney = startJourney;
@@ -37,11 +45,11 @@ public class Trainer {
         this.pokemons = pokemons;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,6 +75,7 @@ public class Trainer {
 
     public void setMoney(double money) {
         this.money = money;
+
     }
 
     public int getPokemonHasCaught() {

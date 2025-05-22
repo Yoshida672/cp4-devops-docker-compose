@@ -5,7 +5,6 @@ import br.com.fiap.cp_api_rest.enums.Category;
 import br.com.fiap.cp_api_rest.enums.Type;
 
 public record MoveResponse(
-        Integer id,
          String name,
          String description,
          Type type,

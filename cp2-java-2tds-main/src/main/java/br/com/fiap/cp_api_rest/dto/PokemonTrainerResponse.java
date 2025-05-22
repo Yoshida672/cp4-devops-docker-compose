@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 public record PokemonTrainerResponse(
-        Integer id,
+        Long id,
         String nickname,
         String ability,
         String location,

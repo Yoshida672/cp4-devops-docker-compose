@@ -9,25 +9,34 @@ import jdk.jfr.Percentage;
 
 import java.util.List;
 @Entity
+@Table(name = "poke_move")
 public class Move {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
+    @Column(name = "move_name",nullable = false)
     private String name;
+
+    @Column(name = "move_description",nullable = false)
     private String description;
+    @Column(name = "move_type",nullable = false)
     private Type type;
+    @Column(name = "move_category",nullable = false)
     private Category category;
+    @Column(name = "move_power",nullable = false)
     private double power;
+    @Column(name = "move_accuracy",nullable = false)
     private double accuracy;
+    @Column(name = "pp_max",nullable = false)
     private int ppMax;
+    @Column(name = "pp_current",nullable = false)
     private int ppCurrent;
 //    private Effect effectMove;
 //    private double chanceEffectMove;
 //    private Effect effectSecondary;
 //    private double chanceEffectSecondary;
     @ManyToMany(mappedBy = "possibleMovesLearn")
-
     private List<Pokemon> pokemonsLearn;
 
     public Move() {

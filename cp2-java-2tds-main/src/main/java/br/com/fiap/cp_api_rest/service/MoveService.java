@@ -88,7 +88,6 @@ public class MoveService {
             ).withRel("Lista de Clientes");
         }
         return new MoveResponse(
-                move.getId(),
                 move.getName(),
                 move.getDescription(),
                 move.getType(),

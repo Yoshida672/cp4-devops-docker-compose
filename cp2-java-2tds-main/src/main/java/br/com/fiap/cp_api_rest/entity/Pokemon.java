@@ -6,23 +6,33 @@ import jakarta.persistence.*;
 
 import java.util.List;
 @Entity
+@Table(name = "pokemon")
 public class Pokemon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
+    @Column(name = "pokemon_number",nullable = false)
     private int number;
+    @Column(name = "pokemon_name",nullable = false)
     private String name;
+    @Column(name = "pokemon_title",nullable = false)
     private String title;
+    @Column(name = "pokemon_description",nullable = false)
     private String description;
     @ElementCollection
     @Enumerated(EnumType.STRING)
+    @Column(name = "possible_gender",nullable = false)
     private List<Gender> possibleGender;
     @ElementCollection
+    @Column(name = "possible_ability",nullable = false)
     private List<String> possibleAbility;
     @Enumerated(EnumType.STRING)
+    @Column(name = "pokemon_type_primary",nullable = false)
     private Type typePrimary;
     @Enumerated(EnumType.STRING)
+    @Column(name = "pokemon_type_secondary",nullable = false)
     private Type typeSecondary;
+    @Column(name = "current_line_evolution",nullable = false)
     private int lineEvolution;
     @ManyToMany
     @JoinTable(name="pokemon_moves",
@@ -37,7 +47,7 @@ public class Pokemon {
     public Pokemon() {
     }
 
-    public Pokemon(Integer id, int number, String name, String title, String description, List<Gender> possibleGender, List<String> possibleAbility, Type typePrimary, Type typeSecondary, int lineEvolution, List<Move> possibleMovesLearn) {
+    public Pokemon(Long id, int number, String name, String title, String description, List<Gender> possibleGender, List<String> possibleAbility, Type typePrimary, Type typeSecondary, int lineEvolution, List<Move> possibleMovesLearn) {
         this.id = id;
         this.number = number;
         this.name = name;
@@ -59,11 +69,11 @@ public class Pokemon {
         this.description = description;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

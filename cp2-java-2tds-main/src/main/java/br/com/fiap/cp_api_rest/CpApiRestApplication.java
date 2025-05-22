@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(title = "API POKEMON",description = "API RESTFUL de pokemons",version = "v1"))
-
 public class CpApiRestApplication {
 
 	public static void main(String[] args) {

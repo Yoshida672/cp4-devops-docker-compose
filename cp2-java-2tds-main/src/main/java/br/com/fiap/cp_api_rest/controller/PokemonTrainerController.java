@@ -27,7 +27,7 @@ public class PokemonTrainerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PokemonTrainerResponse> findById(@PathVariable Integer id) {
+    public ResponseEntity<PokemonTrainerResponse> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
@@ -37,12 +37,12 @@ public class PokemonTrainerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PokemonTrainerResponse> update(@PathVariable Integer id, @RequestBody @Valid PokemonTrainerRequest request) {
+    public ResponseEntity<PokemonTrainerResponse> update(@PathVariable Long id, @RequestBody @Valid PokemonTrainerRequest request) {
         return ResponseEntity.ok(service.update(id, request));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

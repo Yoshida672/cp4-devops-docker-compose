@@ -47,5 +47,8 @@ public record PokemonTrainerRequest(
         Date dateCapture,
 
 
-        List<@NotNull Integer> movesId
+        List<@NotNull Integer> movesId,
+
+        boolean shiny
+
 ) {}

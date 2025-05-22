@@ -31,7 +31,7 @@ public class PokemonService {
                 .collect(Collectors.toList());
     }
 
-    public PokemonResponse findById(Integer id) {
+    public PokemonResponse findById(Long id) {
         Pokemon pokemon = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Pokemon não encontrado com id " + id));
         return PokemonToResponse(pokemon);
@@ -42,7 +42,7 @@ public class PokemonService {
         return PokemonToResponse(repository.save(pokemon));
     }
 
-    public PokemonResponse update(Integer id, PokemonRequest request) {
+    public PokemonResponse update(Long id, PokemonRequest request) {
         Pokemon existente = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Pokemon não encontrado com id " + id));
         Pokemon atualizado = RequestToPokemon(request);
@@ -50,7 +50,7 @@ public class PokemonService {
         return PokemonToResponse(repository.save(atualizado));
     }
 
-    public void delete(Integer id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 
@@ -80,7 +80,6 @@ public class PokemonService {
     public static PokemonResponse PokemonToResponse(Pokemon pokemon) {
 
         return new PokemonResponse(
-                pokemon.getId(),
                 pokemon.getNumber(),
                 pokemon.getName(),
                 pokemon.getTitle(),

@@ -8,31 +8,38 @@ import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 @Entity
+@Table(name = "pokemon_trainer")
 public class PokemonTrainer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
-    private Integer id;
+    private Long id;
+    @Column(name = "nickname",nullable = false)
     private String nickname;
     @Enumerated(EnumType.STRING)
+    @Column(name = "group_exp",nullable = false)
     private GroupExp groupExp;
 
     @ManyToOne
     @JoinColumn(name="id_pokemon")
     private Pokemon pokemon;
     @Enumerated(EnumType.STRING)
+    @Column(name = "gender",nullable = false)
     private Gender gender;
+    @Column(name = "ability",nullable = false)
     private String ability;
     @Enumerated(EnumType.STRING)
+    @Column(name = "nature",nullable = false)
     private Nature nature;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_status")
     private Status status;
+    @Column(name = "location",nullable = false)
     private String location;
     @ManyToOne
     @JoinColumn(name="id_trainer")
     private Trainer trainer;
+    @Column(name = "date_capture",nullable = false)
     private Date dateCapture;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="pokemon_trainer_moves",
@@ -41,12 +48,13 @@ public class PokemonTrainer {
             inverseJoinColumns = @JoinColumn(name = "id_move",referencedColumnName = "id")
     )
     private List<Move> moves;
+    @Column(name = "shiny",nullable = false)
     private boolean shiny;
 
     public PokemonTrainer() {
     }
 
-    public PokemonTrainer(Integer id, String nickname, GroupExp groupExp, Pokemon pokemon, Gender gender, String ability, Nature nature, Status status, String location, Trainer trainer, Date dateCapture, List<Move> moves, boolean shiny) {
+    public PokemonTrainer(Long id, String nickname, GroupExp groupExp, Pokemon pokemon, Gender gender, String ability, Nature nature, Status status, String location, Trainer trainer, Date dateCapture, List<Move> moves, boolean shiny) {
         this.id = id;
         this.nickname = nickname;
         this.groupExp = groupExp;
@@ -62,11 +70,11 @@ public class PokemonTrainer {
         this.shiny = shiny;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

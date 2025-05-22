@@ -27,7 +27,7 @@ public class PokemonController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PokemonResponse> findById(@PathVariable Integer id) {
+    public ResponseEntity<PokemonResponse> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
@@ -37,12 +37,12 @@ public class PokemonController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PokemonResponse> update(@PathVariable Integer id, @RequestBody @Valid PokemonRequest request) {
+    public ResponseEntity<PokemonResponse> update(@PathVariable Long id, @RequestBody @Valid PokemonRequest request) {
         return ResponseEntity.ok(service.update(id, request));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

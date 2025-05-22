@@ -26,7 +26,7 @@ public class TrainerService {
                 .collect(Collectors.toList());
     }
 
-    public TrainerResponse findById(Integer id) {
+    public TrainerResponse findById(Long id) {
         Trainer trainer = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Treinador não encontrado com ID: " + id));
         return TrainerToResponse(trainer);
@@ -37,7 +37,7 @@ public class TrainerService {
         return TrainerToResponse(repository.save(trainer));
     }
 
-    public TrainerResponse update(Integer id, TrainerRequest request) {
+    public TrainerResponse update(Long id, TrainerRequest request) {
         Trainer existente = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Treinador não encontrado com ID: " + id));
         Trainer atualizado = RequestToTrainer(request);
@@ -45,7 +45,7 @@ public class TrainerService {
         return TrainerToResponse(repository.save(atualizado));
     }
 
-    public void delete(Integer id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 

@@ -5,10 +5,11 @@ import jakarta.persistence.*;
 
 import java.util.Random;
 @Entity
+@Table(name="poke_status")
 public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     //TODO: ADICIONAR MÉTODO DE EVOLUIR
     //TODO: ADICIONAR MÉTODO DE GERAR EXPERIENCIA
@@ -89,7 +90,7 @@ public class Status {
     public Status() {
     }
 
-    public Status(Integer id, int lvl, int expPoints, PokemonTrainer pokemonTrainer, int hp, int attack, int spAttack, int defense, int spDefense, int speed, int total, int hpBase, int attackBase, int spAttackBase, int defenseBase, int spDefenseBase, int speedBase, int totalBase) {
+    public Status(Long id, int lvl, int expPoints, PokemonTrainer pokemonTrainer, int hp, int attack, int spAttack, int defense, int spDefense, int speed, int total, int hpBase, int attackBase, int spAttackBase, int defenseBase, int spDefenseBase, int speedBase, int totalBase) {
         this.id = id;
         this.lvl = lvl;
         this.expPoints = expPoints;
@@ -206,11 +207,11 @@ public class Status {
         return total;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
