@@ -14,16 +14,13 @@
 
 ## Imagens utilizadas
 1. Oracle Express: **container-registry.oracle.com/database/express:21.3.0-xe**
-
-Site: https://container-registry.oracle.com/ords/f?p=113:4:114383781878289:::4:P4_REPOSITORY,AI_REPOSITORY,AI_REPOSITORY_NAME,P4_REPOSITORY_NAME,P4_EULA_ID,P4_BUSINESS_AREA_ID:803,803,Oracle%20Database%20Express%20Edition,Oracle%20Database%20Express%20Edition,1,0&cs=3DdcwyIjLmXFfW0MdcNYp4hHWnNkNX8W9KCbHq1pWQvrAX9AvLkREs963J3z_tlUZR3XDbYGk8NQtQtjud9KmCg
+- Site: [Oracle-Express](https://container-registry.oracle.com/ords/f?p=113:4:114383781878289:::4:P4_REPOSITORY,AI_REPOSITORY,AI_REPOSITORY_NAME,P4_REPOSITORY_NAME,P4_EULA_ID,P4_BUSINESS_AREA_ID:803,803,Oracle%20Database%20Express%20Edition,Oracle%20Database%20Express%20Edition,1,0&cs=3DdcwyIjLmXFfW0MdcNYp4hHWnNkNX8W9KCbHq1pWQvrAX9AvLkREs963J3z_tlUZR3XDbYGk8NQtQtjud9KmCg)
 
 2. Gradle 8.13: **gradle:8.13-jdk17**
-
-Site: https://hub.docker.com/layers/library/gradle/8.13-jdk17/images/sha256-9f31f23bd02d8273cad77b8c9f3809085fecf42e5182735e4ee5abedabdb340c
+- Site: [Gradle8.13](https://hub.docker.com/layers/library/gradle/8.13-jdk17/images/sha256-9f31f23bd02d8273cad77b8c9f3809085fecf42e5182735e4ee5abedabdb340c)
 
 3. DBGate: **dbgate/dbgate**
-
-Site: https://dbgate.org/download/
+- Site: [DBGate](https://dbgate.org/download/)
 
 ## Execução do projeto
 
@@ -110,3 +107,27 @@ docker run -d --name dbgate --network net-dimdim -p 3000:3000 dbgate/dbgate
 docker exec -it app-java /bin/bash
 ```
 - Teste o comando ```whoami```
+
+### 5º - Testando o CRUD
+
+#### DBGate
+- Conecte no DBGate através da porta 3000 ```http://ip:3000```
+- Crie uma nova conexão e preencha os campos da seguinte forma:
+
+Tipo de Banco: OracleDB
+Server: oracle-db (nome do container)
+Service Name: XE
+User: system
+Senha: Oracle123
+
+- No banco, procure pelo usuário "system", depois pesquise na barra de busca pela tabela "POKE_MOVE"
+
+#### Postman
+
+- Entre no link e crie uma conta em "Sign Up" ou entre no botão "Workspace" caso já tenha uma para poder testar o CRUD
+[Workspace](https://www.postman.com/product/workspaces/)
+
+- Entre no seu Workspace e clica no + ao lado do Overview
+
+**GET**
+
