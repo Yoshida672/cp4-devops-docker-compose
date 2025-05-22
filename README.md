@@ -66,3 +66,39 @@ sudo usermod -aG docker seu_usuario
 ```
 docker network create net-dimdim
 ```
+#### Container Banco de dados
+- Iremos definir as portas e variáveis de ambiente junto com a criação do banco:
+```
+docker container run -d --name oracle-db --network net-dimdim -p 1521:1521 -p 5500:5500 --ulimit nofile=65535:65535 -e ORACLE_PWD=Oracle123 -v /home/admlnx/oracle_data:/opt/oracle/oradata container-registry.oracle.com/database/express:21.3.0-xe
+```
+- Leva em torno de 10 minutos para baixar a imagem e construir o banco de dados, então avance após o banco estar completamente criado.
+- Verifique com o comando ````docker ps -a```, caso esteja UP (Created) na parte de Status, então o foi criado corretamente e pode prosseguir os próximos passos.
+##### Configuração do Banco
+- O banco Oracle Express precisa de uma permissão para poder realizar a conexão com o app (era pra estar realizando logo após a criação do container, porém está com algum erro desconhecido)
+```
+sudo chown 54321:54321 /home/admlnx/oracle_data
+```
+#### Container do App java
+- Clona este projeto e já entra no App java:
+```
+git clone https://github.com/Gustavo295/crud-with-dockerfile.git && cd crud-with-dockerfile/cp2-java-2tds-main
+```
+- Buildar o Dockerfile
+```
+docker build -t app-spring .
+```
+- Agora rode o container do app (aguarde em torno de 30 segundos para poder rodar corretamente)
+```
+docker run -d --name app-java --network net-dimdim -p 8080:8080 app-spring
+```
+#### Container dbgate
+- Execute o container para expôr a porta 3000 e criar o dbgate:
+```
+docker run -d --name dbgate --network net-dimdim -p 3000:3000 dbgate/dbgate
+```
+### 4º - Verificando o User do App Java
+- Verifique se foi criado um usuário não root na aplicação
+```
+docker exec -it app-java /bin/bash
+```
+- Teste o comando ```whoami```
