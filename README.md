@@ -124,10 +124,78 @@ Senha: Oracle123
 
 #### Postman
 
+**SITE**
 - Entre no link e crie uma conta em "Sign Up" ou entre no botão "Workspace" caso já tenha uma para poder testar o CRUD
 [Workspace](https://www.postman.com/product/workspaces/)
 
 - Entre no seu Workspace e clica no + ao lado do Overview
 
+- Coloque o endereço da sua aplicação e da tabela poke_move `http://ip:8080/moves`
+
+#### TESTE
+**POST**
+  
+```
+{
+  "name": "Tackle",
+  "description": "Um ataque físico básico em que Bulbasaur investe contra o oponente.",
+  "type": "NORMAL",
+  "category": "PHYSICAL",
+  "power": 40.0,
+  "accuracy": 90.0,
+  "ppMax": 35
+}
+```
+
+![image](https://github.com/user-attachments/assets/76f026e2-22b9-474a-a8de-9deaf76d11c1)
+
+- Clique em Send ou tecle CTRL + Enter
+
 **GET**
+
+- Mude o parâmetro e veja se retorna as informações que inseriu
+
+- `http://ip:8080/moves/1` para pegar por id
+
+**PUT**
+
+- `http://ip:8080/moves/1` para mudar o id
+
+```
+{
+  "name": "Tackle",
+  "description": "Um ataque físico básico em que Bulbasaur investe contra o oponente.",
+  "type": "NORMAL",
+  "category": "PHYSICAL",
+  "power": 40.0,
+  "accuracy": 100.0,
+  "ppMax": 35
+}
+```
+
+- Mude o parâmetro pra PUT e veja se mudou a "accuracy" para 100.0 com o GET
+
+**DELETE**
+
+- `http://ip:8080/moves/1` para deletar o id
+- Verfique com o GET se foi deletado
+
+#### DBGate
+
+- Após testar o CRUD pelo postman, vamos verificar se está salvando no banco de dados corretamente. Insira estes dados com o Método POST novamente
+```
+{
+  "name": "Tackle",
+  "description": "Um ataque físico básico em que Bulbasaur investe contra o oponente.",
+  "type": "NORMAL",
+  "category": "PHYSICAL",
+  "power": 40.0,
+  "accuracy": 100.0,
+  "ppMax": 35
+}
+```
+
+- Entre na tabela POKE_MOVE, caso já esteja nela tecle CTRL + R para reiniciar a página
+
+![image](https://github.com/user-attachments/assets/7fba7c4b-7647-405a-944c-95daabb2b4b9)
 
