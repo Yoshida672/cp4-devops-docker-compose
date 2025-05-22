@@ -76,7 +76,7 @@ docker network create net-dimdim
 #### Container Banco de dados
 - Iremos definir as portas e variáveis de ambiente junto com a criação do banco:
 ```
-docker container run -d --name oracle-db --network net-dimdim -p 1521:1521 -p 5500:5500 --ulimit nofile=65535:65535 -e ORACLE_PWD=Oracle123 -v /home/admlnx/oracle_data:/opt/oracle/oradata container-registry.oracle.com/database/express:21.3.0-xe
+docker container run -d --name oracle-db --network net-dimdim -p 1521:1521 -p 5500:5500 --ulimit nofile=65535:65535 -e ORACLE_PWD=Oracle123 -v /home/admlnx/oracle_data:/opt/oracle/oradata container-registry.oracle.com/database/express:21.3.0-xe && sudo chown 54321:54321 /home/admlnx/oracle_data
 ```
 - Leva em torno de 10 minutos para baixar a imagem e construir o banco de dados, então avance após o banco estar completamente criado.
 - Verifique com o comando ````docker ps -a```, caso esteja UP (Healthy) na parte de Status, então o foi criado corretamente e pode prosseguir os próximos passos, caso contrário, veja o tópico de configuração do banco.
