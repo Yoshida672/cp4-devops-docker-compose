@@ -60,7 +60,9 @@ sudo usermod -aG docker seu_usuario
 ```
 #### Instalação **Git**
 - Para instalação do **Git**, execute o comando abaixo. Após isso verifique se foi instalado corretamente com ```git --version```.
-```sudo yum install git -y```
+```
+sudo yum install git -y
+```
 ### 3º - Criação dos três containers (a partir de agora os comandos terão nomes pré-definidos para conexão e construção dos containers)
 #### Crie sua rede 
 ```
