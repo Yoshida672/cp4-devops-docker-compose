@@ -72,9 +72,10 @@ docker network create net-dimdim
 docker container run -d --name oracle-db --network net-dimdim -p 1521:1521 -p 5500:5500 --ulimit nofile=65535:65535 -e ORACLE_PWD=Oracle123 -v /home/admlnx/oracle_data:/opt/oracle/oradata container-registry.oracle.com/database/express:21.3.0-xe
 ```
 - Leva em torno de 10 minutos para baixar a imagem e construir o banco de dados, então avance após o banco estar completamente criado.
-- Verifique com o comando ````docker ps -a```, caso esteja UP (Created) na parte de Status, então o foi criado corretamente e pode prosseguir os próximos passos.
+- Verifique com o comando ````docker ps -a```, caso esteja UP (Healthy) na parte de Status, então o foi criado corretamente e pode prosseguir os próximos passos, caso contrário, veja o tópico de configuração do banco.
+
 ##### Configuração do Banco
-- O banco Oracle Express precisa de uma permissão para poder realizar a conexão com o app (era pra estar realizando logo após a criação do container, porém está com algum erro desconhecido)
+- Caso tenha ficado UP (Unhealty) execute novamente a permissão (era pra estar realizando logo após a criação do container, porém está com algum erro desconhecido):
 ```
 sudo chown 54321:54321 /home/admlnx/oracle_data
 ```
