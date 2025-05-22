@@ -229,10 +229,10 @@ rm -rf crud-with-dockerfile
 ### 🧐 7º - Considerações Finais
 
 - Vamos rever nosso projeto
-✅ Containerizamos 3 imagens, sendo uma delas personalizada
-✅ Sinergia e conexão entre as imagens
-✅ Criação de um banco de dados funcional
-✅ CRUD completo
-✅ Automatização por Dockerfile
+* ✅ Containerizamos 3 imagens, sendo uma delas personalizada
+* ✅ Sinergia e conexão entre as imagens
+* ✅ Criação de um banco de dados funcional
+* ✅ CRUD completo
+* ✅ Automatização por Dockerfile
 
 - Obrigado por acompanhar até aqui!😉
