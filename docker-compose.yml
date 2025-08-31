@@ -1,0 +1,42 @@
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: MySQL123
+      MYSQL_DATABASE: meubanco
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: senha123
+    ports:
+      - "3306:3306"
+    volumes:
+      - /home/admlnx/mysql_data:/var/lib/mysql
+    networks:
+      - net-dimdim
+
+  app-java:
+    build:
+     context: ../cp4-devops-docker-compose/cp2-java-2tds-main
+     dockerfile: Dockerfile
+    container_name: app-java
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - mysql-db
+        condition: service_healty
+    networks:
+      - net-dimdim
+
+  dbgate:
+    image: dbgate/dbgate
+    container_name: dbgate
+    ports:
+      - "3000:3000"
+    networks:
+      - net-dimdim
+
+networks:
+  net-dimdim:
