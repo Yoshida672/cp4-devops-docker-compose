@@ -32,13 +32,5 @@ services:
     networks:
       - net-dimdim
 
-  dbgate:
-    image: dbgate/dbgate
-    container_name: dbgate
-    ports:
-      - "3000:3000"
-    networks:
-      - net-dimdim
-
 networks:
   net-dimdim:
