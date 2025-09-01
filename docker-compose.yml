@@ -13,6 +13,12 @@ services:
       - /home/admlnx/mysql_data:/var/lib/mysql
     networks:
       - net-dimdim
+    restart: on-failure
+    healtcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 20s
+      timeout: 20
+      retries: 5
 
   app-java:
     build:
@@ -31,6 +37,7 @@ services:
       - mysql-db
     networks:
       - net-dimdim
+    restart: unless-stopped
 
 networks:
   net-dimdim:
