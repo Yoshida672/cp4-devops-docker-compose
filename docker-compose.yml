@@ -14,7 +14,7 @@ services:
     networks:
       - net-dimdim
     restart: on-failure
-    healtcheck:
+    healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 20s
       timeout: 20
