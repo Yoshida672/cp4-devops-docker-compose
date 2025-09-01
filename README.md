@@ -18,7 +18,8 @@
 ## Imagens utilizadas
 1. Gradle 8.13: **gradle:8.13-jdk17**  
    - Site: [Gradle8.13](https://hub.docker.com/layers/library/gradle/8.13-jdk17/images/sha256-9f31f23bd02d8273cad77b8c9f3809085fecf42e5182735e4ee5abedabdb340c)  
-
+2. MySQL 8.0: **mysql:8.0**  
+   - Site: [MySQL 8.0](https://hub.docker.com/_/mysql)
 ---
 
 ## O que é Docker Compose?
